@@ -18,6 +18,8 @@ interface IUser extends Document {
   address: string;
   budget: number;
   income: number;
+  createdAt: Date;
+  updatedAt: Date;
 
 }
 
