@@ -2,18 +2,13 @@ import { Schema, model } from 'mongoose';
 import { IUser, UserRole } from './User.interface';
 
 const UserSchema = new Schema<IUser>({
-  phoneNumber: {
+  password: {
     type: String,
     required: true,
-    unique: true,
   },
   role: {
     type: String,
     enum: Object.values(UserRole),
-    required: true,
-  },
-  password: {
-    type: String,
     required: true,
   },
   name: {
@@ -25,6 +20,11 @@ const UserSchema = new Schema<IUser>({
       type: String,
       required: true,
     },
+  },
+  phoneNumber: {
+    type: String,
+    required: true,
+    unique: true,
   },
   address: {
     type: String,

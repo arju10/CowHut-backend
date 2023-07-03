@@ -8,13 +8,13 @@ enum UserRole {
   
 
 interface IUser extends Document {
-    phoneNumber: string;
-    role: UserRole;
-    password: string;
-    name: {
+  password: string;
+  role: UserRole;
+  name: {
     firstName: string;
     lastName: string;
   };
+  phoneNumber: string;
   address: string;
   budget: number;
   income: number;
