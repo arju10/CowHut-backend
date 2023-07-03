@@ -1,19 +1,21 @@
-import express, { Application, Request, Response } from "express";
+import cors from 'cors';
+import express, { Application, NextFunction, Request, Response } from 'express';
+
 const app: Application = express();
-import cors from "cors";
 
 app.use(cors());
 
-// parser
+//parser
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req: Request, res: Response) => {
-  res.send("Hello World!");
-});
-
 // Routes
-import UserRoute from "./User/User.route";
-app.use("/api/v1",UserRoute);
+import UserRoutes from "./User/User.route";
+import CowRoutes from "./Cow/Cow.Route";
+import OrderRoutes from "./Order/Order.Route";
+app.use('/api/v1', UserRoutes);
+app.use('/api/v1',CowRoutes);
+app.use('/api/v1',OrderRoutes)
+
 
 export default app;
