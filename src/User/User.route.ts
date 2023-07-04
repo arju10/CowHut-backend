@@ -1,7 +1,9 @@
 import express from 'express';
-import { createUser, deleteSingleUser, getAllUsers, getSingleUser, updateSingleUser } from './User.controller';
+import { createUser, deleteSingleUser, getAllUsers, getSingleUser, updateSingleUser } from './User.Controller';
+
 const router = express.Router();
 
+// Create a new User
 router.post('/auth/signup', createUser);
 
 // Get all Users
@@ -15,5 +17,6 @@ router.patch('/users/:id',updateSingleUser);
 
 // Delete a User
 router.delete('/users/:id',deleteSingleUser);
+
 
 export default router;

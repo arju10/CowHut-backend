@@ -1,26 +1,16 @@
-import { Document } from 'mongoose';
-
-
-enum UserRole {
-    Seller = 'seller',
-    Buyer = 'buyer',
+export interface User {
+    // _id?: string;
+    password: string;
+    role: 'seller' | 'buyer';
+    name: {
+      firstName: string;
+      lastName: string;
+    };
+    phoneNumber: string;
+    address: string;
+    budget: number;
+    income: number;
+    createdAt?: Date;
+    updatedAt?: Date;
   }
   
-
-interface IUser extends Document {
-  password: string;
-  role: UserRole;
-  name: {
-    firstName: string;
-    lastName: string;
-  };
-  phoneNumber: string;
-  address: string;
-  budget: number;
-  income: number;
-  createdAt: Date;
-  updatedAt: Date;
-
-}
-
-export { IUser, UserRole };

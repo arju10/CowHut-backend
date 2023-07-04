@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Routes
-import UserRoutes from "./User/User.route";
+import UserRoutes from "./User/User.Route";
 import CowRoutes from "./Cow/Cow.Route";
 import OrderRoutes from "./Order/Order.Route";
 app.use('/api/v1', UserRoutes);

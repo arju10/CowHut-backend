@@ -1,0 +1,2 @@
+yarn add ts-node-dev --dev
+    yarn start

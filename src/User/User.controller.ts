@@ -1,27 +1,31 @@
-import {NextFunction, Request, Response } from 'express';
-import UserModel from './User.model';
+import { NextFunction, Request, Response } from 'express';
+import UserModel from "./User.Model";
 
-// Create a new user => Route: /api/v1/auth/signup (POST)
-export const createUser = async (req: Request, res: Response) => {
-  try {
-    const newUser = await UserModel.create(req.body);
-    
-    res.status(200).json({
-      success: true,
-      statusCode: 200,
-      message: 'User created successfully',
-      data: newUser,
-    });
-  } catch (error) {
-    res.status(500).json({ 
+
+// Create a new User => Route: /api/v1/auth/signup (POST)
+
+export const createUser = async (req: Request, res: Response, Next:NextFunction) => {
+    try {
+      const user =req.body;
+      const createdUser = await UserModel.create(user);
+      res.status(201).json({
+        success: true,
+        statusCode: 200,
+        message: 'User created successfully',
+        data: createdUser,
+      });
+    } catch (error) {
+      res.status(500).json({
         success: false,
         statusCode: 500,
-        message: 'Failed to create user' });
-  }
-};
-
- // Get all Users => Route: /api/v1/users (GET)
- export const getAllUsers = async (req: Request, res: Response,Next:NextFunction) => {
+        message: 'Failed to create user',
+        error: error
+      });
+    }
+  };
+  
+  // Get all Users => Route: /api/v1/users (GET)
+export const getAllUsers = async (req: Request, res: Response,Next:NextFunction) => {
   try {
     const users = await UserModel.find();
     res.status(200).json({
